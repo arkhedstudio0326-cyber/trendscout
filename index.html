@@ -1,31 +1,1628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vector Trend Scout</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <script defer src="script.js"></script>
-  <meta name="description" content="Discover trending vector content and AI prompt recommendations.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover trending vector content on Adobe Stock with AI-powered prompt suggestions. Weekly updates on vector illustrations, icons, logos, and design elements.">
+    <meta name="keywords" content="Adobe Stock, vector trends, AI prompts, vector illustrations, design trends, stock graphics">
+    <title>Adobe Stock Vector Trend Scout - Weekly Vector Content Trends</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    
+    <!-- Modern Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100%;
+        }
+        
+        /* Modern Container System */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Modern Grid System */
+        .grid {
+            display: grid;
+            gap: 32px;
+        }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        @media (max-width: 768px) {
+            .grid-cols-2, .grid-cols-3 { grid-template-columns: 1fr; }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        /* Modern Flexbox Utilities */
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 8px; }
+        .gap-4 { gap: 16px; }
+        .gap-6 { gap: 24px; }
+        
+        /* Modern Spacing System */
+        .p-4 { padding: 16px; }
+        .p-6 { padding: 24px; }
+        .p-8 { padding: 32px; }
+        .px-3 { padding-left: 12px; padding-right: 12px; }
+        .px-4 { padding-left: 16px; padding-right: 16px; }
+        .px-6 { padding-left: 24px; padding-right: 24px; }
+        .px-8 { padding-left: 32px; padding-right: 32px; }
+        .px-10 { padding-left: 40px; padding-right: 40px; }
+        .py-1 { padding-top: 4px; padding-bottom: 4px; }
+        .py-2 { padding-top: 8px; padding-bottom: 8px; }
+        .py-3 { padding-top: 12px; padding-bottom: 12px; }
+        .py-4 { padding-top: 16px; padding-bottom: 16px; }
+        .py-8 { padding-top: 32px; padding-bottom: 32px; }
+        .py-12 { padding-top: 48px; padding-bottom: 48px; }
+        .py-16 { padding-top: 64px; padding-bottom: 64px; }
+        
+        .m-0 { margin: 0; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mb-12 { margin-bottom: 48px; }
+        .mb-16 { margin-bottom: 64px; }
+        .mb-20 { margin-bottom: 80px; }
+        .mb-24 { margin-bottom: 96px; }
+        .mb-32 { margin-bottom: 128px; }
+        .mt-2 { margin-top: 8px; }
+        .mt-3 { margin-top: 12px; }
+        .mt-16 { margin-top: 64px; }
+        
+        /* Modern Typography */
+        .text-xs { font-size: 12px; }
+        .text-sm { font-size: 14px; }
+        .text-base { font-size: 16px; }
+        .text-lg { font-size: 18px; }
+        .text-xl { font-size: 20px; }
+        .text-2xl { font-size: 24px; }
+        .text-3xl { font-size: 30px; }
+        .text-4xl { font-size: 36px; }
+        .text-5xl { font-size: 48px; }
+        .text-6xl { font-size: 60px; }
+        .text-7xl { font-size: 72px; }
+        
+        .font-light { font-weight: 300; }
+        .font-normal { font-weight: 400; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 900; }
+        
+        .text-center { text-align: center; }
+        .leading-tight { line-height: 1.25; }
+        .tracking-wide { letter-spacing: 0.025em; }
+        
+        /* Modern Color System */
+        .text-white { color: #ffffff; }
+        .text-gray-200 { color: #e5e7eb; }
+        .text-gray-300 { color: #d1d5db; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-blue-100 { color: #dbeafe; }
+        .text-blue-200 { color: #bfdbfe; }
+        .text-blue-300 { color: #93c5fd; }
+        .text-cyan-400 { color: #22d3ee; }
+        
+        /* Modern Border Radius */
+        .rounded-lg { border-radius: 8px; }
+        .rounded-xl { border-radius: 12px; }
+        .rounded-full { border-radius: 9999px; }
+        
+        /* Modern Positioning */
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .top-4 { top: 16px; }
+        .right-4 { right: 16px; }
+        .z-10 { z-index: 10; }
+        .z-50 { z-index: 50; }
+        
+        /* Modern Display Utilities */
+        .block { display: block; }
+        .hidden { display: none; }
+        .cursor-pointer { cursor: pointer; }
+        .overflow-hidden { overflow: hidden; }
+        .overflow-x-auto { overflow-x: auto; }
+        
+        /* Modern Opacity */
+        .opacity-75 { opacity: 0.75; }
+        
+        /* Modern Transform */
+        .transform { transform: translateZ(0); }
+        .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+        .transition-all { transition: all 0.15s ease-in-out; }
+        
+        /* Plain dark gray background */
+        .bg-gradient-custom {
+            background: #2a2a2a;
+        }
+        
+        /* Ultra-modern glassmorphism trend cards */
+        .trend-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid #4a4a4a;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trend-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .trend-card:hover::before {
+            left: 100%;
+        }
+        
+        .trend-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #00d4ff;
+        }
+        
+        /* Ultra-modern growth tag with glassmorphism */
+        .growth-tag {
+            background: rgba(34, 197, 94, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid #4a4a4a;
+            animation: modern-pulse 3s ease-in-out infinite;
+            box-shadow: 
+                0 4px 20px rgba(34, 197, 94, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+        }
+        
+        @keyframes modern-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 4px 20px rgba(34, 197, 94, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    0 8px 30px rgba(34, 197, 94, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        /* Ultra-modern glassmorphism prompt cards */
+        .prompt-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid #4a4a4a;
+            border-left: 4px solid #00d4ff;
+            border-radius: 24px;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #00d4ff;
+        }
+        
+        .prompt-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 24px 60px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #00d4ff;
+        }
+        
+        /* Ultra-modern primary button with glassmorphism */
+        .btn-primary {
+            background: rgba(0, 212, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid #4a4a4a;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 32px rgba(0, 212, 255, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 16px 48px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Modern glassmorphism filter buttons */
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid #4a4a4a;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            border-color: #00d4ff;
+        }
+        
+        .filter-btn.active {
+            background: rgba(0, 212, 255, 0.9);
+            border-color: #00d4ff;
+            box-shadow: 
+                0 8px 25px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        
+        /* Modern text without gradient */
+        .glow-text {
+            color: #00d4ff;
+        }
+        
+        /* Loading animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Enhanced fade-in animation */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        
+        /* Copy button feedback animation */
+        @keyframes copy-success {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .copy-success {
+            animation: copy-success 0.3s ease;
+        }
+        
+        /* Enhanced accessibility colors with better contrast */
+        .text-accessible { color: #f1f5f9; }
+        .text-accessible-muted { color: #cbd5e1; }
+        
+        /* Modern Notification Styles */
+        .notification {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid #4a4a4a;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: #1f2937;
+        }
+        
+        /* Modern Button Styles */
+        button {
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        /* Modern Background Colors */
+        .bg-blue-500 { background-color: #3b82f6; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-gray-600 { background-color: #4b5563; }
+        .bg-gray-700 { background-color: #374151; }
+        .bg-slate-800 { background-color: #1e293b; }
+        
+        /* Enhanced Search Container Styles */
+        .search-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .search-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .search-container:hover::before {
+            left: 100%;
+        }
+        
+        .search-container:hover {
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #00d4ff;
+        }
+        
+        /* Search Input Enhancement */
+        .search-input-bg {
+            transition: all 0.3s ease;
+        }
+        
+        #searchInput:focus + .search-input-bg {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        #searchInput::placeholder {
+            transition: opacity 0.3s ease;
+        }
+        
+        #searchInput:focus::placeholder {
+            opacity: 0.4;
+        }
+        
+        /* Search Button Enhancement */
+        .search-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .search-btn:hover::before {
+            left: 100%;
+        }
+        
+        .search-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Suggestion Tags Enhancement */
+        .suggestion-tag {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .suggestion-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .suggestion-tag:hover::before {
+            left: 100%;
+        }
+        
+        .suggestion-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Modern Background Opacity */
+        .bg-opacity-30 { background-color: rgba(59, 130, 246, 0.3); }
+        .bg-opacity-60 { background-color: rgba(30, 41, 59, 0.6); }
+        
+        /* Modern Border Styles */
+        .border { border-width: 1px; border-style: solid; }
+        .border-blue-400 { border-color: #00d4ff; }
+        .border-blue-500 { border-color: #00d4ff; }
+        .border-opacity-30 { border-color: #4a4a4a; }
+        .border-opacity-50 { border-color: #00d4ff; }
+        
+        /* Modern Space Utilities */
+        .space-y-6 > * + * { margin-top: 24px; }
+        .space-y-8 > * + * { margin-top: 32px; }
+        .col-span-full { grid-column: 1 / -1; }
+        
+        /* Google-Style Search Styles */
+        .google-search-container {
+            max-width: 584px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .google-search-container:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .google-search-container:focus-within {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-color: transparent;
+        }
+        
+        .google-search-btn {
+            min-width: 54px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .google-search-btn:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            border-color: #c6c6c6;
+        }
+        
+        .google-search-btn:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        
+        .google-search-btn:active {
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .google-suggestion {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .google-suggestion:hover {
+            text-decoration: underline;
+        }
+        
+        /* Google Search Input Focus */
+        #searchInput:focus {
+            outline: none;
+        }
+        
+        /* Google-style autocomplete dropdown */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid #4a4a4a;
+            border-top: none;
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .search-dropdown-item {
+            padding: 8px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #ffffff;
+            transition: background-color 0.2s ease;
+        }
+        
+        .search-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .search-dropdown-item svg {
+            margin-right: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+    </style>
 </head>
-<body class="bg-gradient-custom font-sans text-gray-100 min-h-screen">
-  <div class="container mx-auto px-6 py-10">
-    <header class="text-center mb-10">
-      <h1 class="text-5xl font-bold text-blue-400 mb-2 glow-text">🎨 Vector Trend Scout</h1>
-      <p class="text-lg text-gray-300 mb-6">Weekly vector content trends & AI prompt recommendations</p>
-      <input type="text" id="searchInput" placeholder="Cari tren vector..." 
-        class="search-bar">
-    </header>
+<body class="bg-gradient-custom">
+    <div class="container py-12">
+        <!-- Header Section -->
+        <header class="text-center mb-24 relative">
+            <div class="absolute inset-0 bg-blue-500/10 blur-3xl"></div>
+            <div class="relative z-10">
+                <h1 class="text-6xl md:text-7xl font-black mb-6 text-white leading-tight">
+                    Adobe Stock Vector Trend Scout
+                </h1>
+                <p class="text-2xl text-gray-300 mb-8 font-light tracking-wide">
+                    Discover Weekly Vector Trends & AI-Powered Creative Prompts
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex gap-4 justify-center">
+                    <button 
+                        onclick="refreshTrends()" 
+                        id="refreshBtn" 
+                        class="btn-primary text-white px-10 py-4 rounded-full font-bold text-lg tracking-wide border-2 border-blue-400"
+                        aria-label="Refresh trending vector data">
+                        <span id="refreshIcon">🔄</span> <span id="refreshText">Refresh Trends</span>
+                    </button>
+                </div>
+            </div>
+        </header>
 
-    <main>
-      <section id="keywords" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"></section>
-      <section id="prompts" class="space-y-6"></section>
-    </main>
 
-    <footer class="text-center mt-16 text-gray-400 border-t border-blue-500 border-opacity-30 pt-4">
-      <p>Powered by <span class="text-blue-400 font-semibold">ARKHED Studio</span></p>
-    </footer>
-  </div>
-</body>
+
+        <!-- Category Filter Section -->
+        <section class="mb-24" role="navigation" aria-label="Category filters">
+            <h3 class="text-3xl font-bold mb-12 text-center glow-text">Filter by Category</h3>
+            <div class="flex flex-wrap justify-center gap-4" id="categoryFilters">
+                <button 
+                    onclick="filterByCategory('all')" 
+                    class="filter-btn active bg-blue-600 text-white px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="true">
+                    All Categories
+                </button>
+                <button 
+                    onclick="filterByCategory('Business')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    💼 Business
+                </button>
+                <button 
+                    onclick="filterByCategory('Technology')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    💻 Technology
+                </button>
+                <button 
+                    onclick="filterByCategory('Lifestyle')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🌟 Lifestyle
+                </button>
+                <button 
+                    onclick="filterByCategory('Health')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🏥 Health
+                </button>
+                <button 
+                    onclick="filterByCategory('Transportation')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🚗 Transportation
+                </button>
+                <button 
+                    onclick="filterByCategory('Christmas')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🎄 Christmas
+                </button>
+                <button 
+                    onclick="filterByCategory('Halloween')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🎃 Halloween
+                </button>
+                <button 
+                    onclick="filterByCategory('Valentine')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    💝 Valentine
+                </button>
+                <button 
+                    onclick="filterByCategory('New Year')" 
+                    class="filter-btn bg-gray-700 text-gray-300 px-6 py-3 rounded-full font-semibold"
+                    aria-pressed="false">
+                    🎊 New Year
+                </button>
+            </div>
+        </section>
+
+        <!-- Trending Vector Keywords Section -->
+        <section class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 glow-text">
+                    Trending Vector Keywords
+                </h2>
+                <p class="text-lg text-white/70">Real-time insights into the most popular vector content</p>
+            </div>
+            <div id="keywords" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="region" aria-label="Trending keywords">
+                <!-- Trend cards populated by renderKeywords() -->
+            </div>
+        </section>
+
+        <!-- Prompt Recommendations Section -->
+        <section class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 glow-text">
+                    AI Prompt Recommendations
+                </h2>
+                <p class="text-lg text-white/70">Optimized prompts for creating stunning vector content</p>
+            </div>
+            <div id="prompts" class="space-y-8" role="region" aria-label="AI prompt recommendations">
+                <!-- Prompt cards populated by renderPrompts() -->
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="mt-24 text-center py-16 relative">
+            <div class="section-divider"></div>
+            <div class="text-accessible-muted text-sm">
+                <p>⚡ POWERED BY <span class="text-cyan-400 font-semibold glow-text">🎨 ARKHED DESIGN SYSTEM</span> ⚡</p>
+                <p class="mt-2" id="lastUpdated">🕒 LAST QUANTUM UPDATE: WEEK <span id="currentWeek"></span>, 2025</p>
+            </div>
+            <div class="section-divider"></div>
+        </footer>
+    </div>
+
+    <!-- Deferred JavaScript for better performance -->
+    <script defer>
+        // ===== CONFIGURATION AND DATA =====
+        
+        /**
+         * Configuration object for scraping simulation
+         * Limits results to prevent IP bans and focuses on vector content
+         */
+        const SCRAPING_CONFIG = {
+            media_type: 'vector',
+            max_results: 75,
+            rate_limit_delay: 2000,
+            categories: ['Business', 'Technology', 'Lifestyle', 'Health', 'Transportation', 'Christmas', 'Halloween', 'Valentine', 'New Year']
+        };
+
+        /**
+         * Vector trending data - simulates Adobe Stock API results
+         * All items have media_type: "vector" for consistency
+         */
+        const VECTOR_TRENDING_DATA = [
+            {
+                keyword: "Vector Illustrations",
+                growth: "+312%",
+                category: "Technology",
+                searches: "189K",
+                description: "Scalable vector graphics for web and print design",
+                media_type: "vector"
+            },
+            {
+                keyword: "Icon Sets",
+                growth: "+278%",
+                category: "Technology", 
+                searches: "156K",
+                description: "Consistent vector icon collections for digital interfaces",
+                media_type: "vector"
+            },
+            {
+                keyword: "Infographic Elements",
+                growth: "+245%",
+                category: "Business",
+                searches: "134K", 
+                description: "Data visualization components and chart vectors",
+                media_type: "vector"
+            },
+            {
+                keyword: "Logo Templates",
+                growth: "+198%",
+                category: "Business",
+                searches: "112K",
+                description: "Editable vector logo designs and brand elements", 
+                media_type: "vector"
+            },
+            {
+                keyword: "Pattern Designs",
+                growth: "+167%",
+                category: "Lifestyle",
+                searches: "98K",
+                description: "Seamless vector patterns for backgrounds and textures",
+                media_type: "vector"
+            },
+            {
+                keyword: "Character Vectors", 
+                growth: "+234%",
+                category: "Lifestyle",
+                searches: "87K",
+                description: "Cartoon and professional character illustrations",
+                media_type: "vector"
+            },
+            {
+                keyword: "Medical Icons",
+                growth: "+189%",
+                category: "Health",
+                searches: "76K",
+                description: "Healthcare and medical vector icon collections",
+                media_type: "vector"
+            },
+            {
+                keyword: "Transport Vectors",
+                growth: "+156%", 
+                category: "Transportation",
+                searches: "65K",
+                description: "Vehicle and transportation vector illustrations",
+                media_type: "vector"
+            },
+            {
+                keyword: "Tech Diagrams",
+                growth: "+223%",
+                category: "Technology",
+                searches: "92K",
+                description: "Technical diagrams and flowchart vectors",
+                media_type: "vector"
+            },
+            {
+                keyword: "Wellness Graphics",
+                growth: "+178%",
+                category: "Health", 
+                searches: "54K",
+                description: "Mental health and wellness vector illustrations",
+                media_type: "vector"
+            },
+            // Seasonal Event Categories
+            {
+                keyword: "Christmas Ornaments",
+                growth: "+445%",
+                category: "Christmas",
+                searches: "298K",
+                description: "Festive Christmas decoration vectors and holiday elements",
+                media_type: "vector"
+            },
+            {
+                keyword: "Santa Claus Vectors",
+                growth: "+389%",
+                category: "Christmas",
+                searches: "267K",
+                description: "Santa Claus character illustrations and Christmas scenes",
+                media_type: "vector"
+            },
+            {
+                keyword: "Christmas Trees",
+                growth: "+356%",
+                category: "Christmas",
+                searches: "234K",
+                description: "Christmas tree vectors with decorations and lights",
+                media_type: "vector"
+            },
+            {
+                keyword: "Halloween Pumpkins",
+                growth: "+423%",
+                category: "Halloween",
+                searches: "187K",
+                description: "Spooky pumpkin vectors and jack-o'-lantern designs",
+                media_type: "vector"
+            },
+            {
+                keyword: "Ghost Vectors",
+                growth: "+378%",
+                category: "Halloween",
+                searches: "156K",
+                description: "Cute and scary ghost illustrations for Halloween",
+                media_type: "vector"
+            },
+            {
+                keyword: "Halloween Bats",
+                growth: "+334%",
+                category: "Halloween",
+                searches: "143K",
+                description: "Flying bat silhouettes and Halloween creature vectors",
+                media_type: "vector"
+            },
+            {
+                keyword: "Valentine Hearts",
+                growth: "+512%",
+                category: "Valentine",
+                searches: "345K",
+                description: "Romantic heart vectors and love-themed illustrations",
+                media_type: "vector"
+            },
+            {
+                keyword: "Cupid Vectors",
+                growth: "+467%",
+                category: "Valentine",
+                searches: "198K",
+                description: "Cupid character vectors and Valentine's Day romance",
+                media_type: "vector"
+            },
+            {
+                keyword: "Love Letters",
+                growth: "+398%",
+                category: "Valentine",
+                searches: "176K",
+                description: "Romantic letter and envelope vector illustrations",
+                media_type: "vector"
+            },
+            {
+                keyword: "Fireworks Vectors",
+                growth: "+489%",
+                category: "New Year",
+                searches: "289K",
+                description: "Celebration fireworks and New Year party vectors",
+                media_type: "vector"
+            },
+            {
+                keyword: "Champagne Bottles",
+                growth: "+445%",
+                category: "New Year",
+                searches: "234K",
+                description: "Champagne celebration vectors and party elements",
+                media_type: "vector"
+            },
+            {
+                keyword: "Clock Midnight",
+                growth: "+412%",
+                category: "New Year",
+                searches: "198K",
+                description: "Midnight clock vectors and countdown illustrations",
+                media_type: "vector"
+            }
+        ];
+
+
+
+        /**
+         * AI prompt recommendations optimized for vector content
+         * Each prompt includes both text and JSON formats
+         */
+        const VECTOR_PROMPT_DATA = [
+            {
+                title: "Business Infographic Vector",
+                prompt: "Clean vector infographic with data charts, business icons, professional color scheme, scalable elements, modern flat design style, suitable for presentations and reports",
+                jsonPrompt: {
+                    "type": "vector infographic",
+                    "elements": ["data charts", "business icons", "text areas"],
+                    "style": "modern flat design", 
+                    "colors": "professional palette",
+                    "format": "scalable vector",
+                    "use_case": "presentations and reports"
+                },
+                tags: ["Vector", "Infographic", "Business", "Charts"],
+                difficulty: "Medium",
+                style: "Flat Design",
+                category: "Business"
+            },
+            {
+                title: "Icon Set Collection",
+                prompt: "Consistent vector icon set with 24x24 grid, minimal line style, technology and communication themes, uniform stroke width, scalable SVG format",
+                jsonPrompt: {
+                    "type": "icon set",
+                    "grid": "24x24 pixels",
+                    "style": "minimal line icons",
+                    "theme": "technology and communication",
+                    "consistency": "uniform stroke width",
+                    "format": "scalable SVG"
+                },
+                tags: ["Vector", "Icons", "UI", "Technology"],
+                difficulty: "Easy",
+                style: "Line Art",
+                category: "Technology"
+            },
+            {
+                title: "Logo Design Template",
+                prompt: "Professional vector logo template with geometric shapes, modern typography, multiple color variations, scalable design, suitable for tech companies",
+                jsonPrompt: {
+                    "type": "logo template",
+                    "elements": ["geometric shapes", "modern typography"],
+                    "variations": "multiple color options",
+                    "scalability": "vector format", 
+                    "target": "tech companies",
+                    "style": "professional and modern"
+                },
+                tags: ["Vector", "Logo", "Branding", "Geometric"],
+                difficulty: "Hard",
+                style: "Corporate",
+                category: "Business"
+            },
+            {
+                title: "Medical Vector Icons",
+                prompt: "Healthcare vector icon set with medical symbols, hospital equipment, health monitoring devices, clean line style, professional medical color palette",
+                jsonPrompt: {
+                    "type": "medical icons",
+                    "elements": ["medical symbols", "hospital equipment", "health devices"],
+                    "style": "clean line icons",
+                    "colors": "medical professional palette",
+                    "format": "scalable vector"
+                },
+                tags: ["Vector", "Medical", "Healthcare", "Icons"],
+                difficulty: "Medium",
+                style: "Medical",
+                category: "Health"
+            },
+            {
+                title: "Transportation Vector Set",
+                prompt: "Vehicle and transportation vector collection with cars, planes, trains, bikes, modern flat design, consistent style, scalable SVG format",
+                jsonPrompt: {
+                    "type": "transportation vectors",
+                    "vehicles": ["cars", "planes", "trains", "bikes"],
+                    "style": "modern flat design",
+                    "consistency": "uniform design language",
+                    "format": "scalable SVG"
+                },
+                tags: ["Vector", "Transportation", "Vehicles", "Travel"],
+                difficulty: "Medium",
+                style: "Flat Design",
+                category: "Transportation"
+            },
+            {
+                title: "Lifestyle Pattern Design",
+                prompt: "Seamless lifestyle vector pattern with organic shapes, wellness symbols, pastel color palette, suitable for backgrounds and textile design",
+                jsonPrompt: {
+                    "type": "lifestyle pattern",
+                    "elements": ["organic shapes", "wellness symbols"],
+                    "colors": "pastel palette",
+                    "tiling": "seamless repeat",
+                    "applications": ["backgrounds", "textile design"]
+                },
+                tags: ["Vector", "Pattern", "Lifestyle", "Wellness"],
+                difficulty: "Easy",
+                style: "Decorative",
+                category: "Lifestyle"
+            },
+            // Seasonal Event Prompts
+            {
+                title: "Christmas Vector Collection",
+                prompt: "Festive Christmas vector set with Santa Claus, reindeer, Christmas trees, ornaments, snowflakes, warm holiday colors, scalable SVG format, suitable for greeting cards and decorations",
+                jsonPrompt: {
+                    "type": "Christmas vectors",
+                    "elements": ["Santa Claus", "reindeer", "Christmas trees", "ornaments", "snowflakes"],
+                    "colors": "warm holiday palette",
+                    "mood": "festive and joyful",
+                    "format": "scalable SVG",
+                    "applications": ["greeting cards", "decorations"]
+                },
+                tags: ["Vector", "Christmas", "Holiday", "Festive"],
+                difficulty: "Medium",
+                style: "Holiday",
+                category: "Christmas"
+            },
+            {
+                title: "Halloween Spooky Vectors",
+                prompt: "Halloween vector collection with pumpkins, ghosts, bats, witches, haunted houses, dark orange and purple color scheme, spooky but family-friendly style",
+                jsonPrompt: {
+                    "type": "Halloween vectors",
+                    "elements": ["pumpkins", "ghosts", "bats", "witches", "haunted houses"],
+                    "colors": "dark orange and purple scheme",
+                    "style": "spooky but family-friendly",
+                    "mood": "mysterious and fun",
+                    "format": "scalable vector"
+                },
+                tags: ["Vector", "Halloween", "Spooky", "Orange"],
+                difficulty: "Medium",
+                style: "Spooky",
+                category: "Halloween"
+            },
+            {
+                title: "Valentine's Day Romance",
+                prompt: "Romantic Valentine vector set with hearts, cupid, roses, love letters, couples, soft pink and red color palette, elegant romantic style, perfect for cards and gifts",
+                jsonPrompt: {
+                    "type": "Valentine vectors",
+                    "elements": ["hearts", "cupid", "roses", "love letters", "couples"],
+                    "colors": "soft pink and red palette",
+                    "style": "elegant romantic",
+                    "mood": "loving and tender",
+                    "applications": ["cards", "gifts"]
+                },
+                tags: ["Vector", "Valentine", "Romance", "Hearts"],
+                difficulty: "Easy",
+                style: "Romantic",
+                category: "Valentine"
+            },
+            {
+                title: "New Year Celebration",
+                prompt: "New Year vector collection with fireworks, champagne, clocks at midnight, confetti, party hats, gold and silver color scheme, celebratory and energetic style",
+                jsonPrompt: {
+                    "type": "New Year vectors",
+                    "elements": ["fireworks", "champagne", "midnight clocks", "confetti", "party hats"],
+                    "colors": "gold and silver scheme",
+                    "style": "celebratory and energetic",
+                    "mood": "festive and hopeful",
+                    "format": "scalable vector"
+                },
+                tags: ["Vector", "New Year", "Celebration", "Fireworks"],
+                difficulty: "Medium",
+                style: "Celebratory",
+                category: "New Year"
+            }
+        ];
+
+        // ===== STATE MANAGEMENT =====
+        
+        /**
+         * Application state object
+         * Manages current data, filters, and loading states
+         */
+        const appState = {
+            currentTrendingData: [...VECTOR_TRENDING_DATA],
+            currentPromptData: [...VECTOR_PROMPT_DATA],
+            currentCategory: 'all',
+            isLoading: false,
+            currentWeek: getCurrentWeekNumber()
+        };
+
+        // ===== UTILITY FUNCTIONS =====
+        
+        /**
+         * Get current week number for consistent weekly updates
+         * Used for seed-based shuffling to ensure stable weekly changes
+         */
+        function getCurrentWeekNumber() {
+            const currentDate = new Date();
+            const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+            const weekNumber = Math.ceil((currentDate - startOfYear) / (7 * 24 * 60 * 60 * 1000));
+            return weekNumber;
+        }
+
+        /**
+         * Improved seed-based shuffle algorithm
+         * Provides consistent results for the same seed value
+         * Used to ensure weekly updates are stable across page reloads
+         */
+        function shuffleWithSeed(array, seed) {
+            const shuffled = [...array];
+            let currentIndex = shuffled.length;
+            
+            // Use a more stable random number generator
+            const seededRandom = (seed) => {
+                const x = Math.sin(seed) * 10000;
+                return x - Math.floor(x);
+            };
+            
+            while (currentIndex !== 0) {
+                const randomIndex = Math.floor(seededRandom(seed + currentIndex) * currentIndex);
+                currentIndex--;
+                [shuffled[currentIndex], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[currentIndex]];
+            }
+            
+            return shuffled;
+        }
+
+        /**
+         * Show notification with improved accessibility
+         * Supports different types and auto-dismissal
+         */
+        function showNotification(message, type = 'info', duration = 3000) {
+            const notification = document.createElement('div');
+            
+            notification.className = `fixed top-4 right-4 notification text-black px-6 py-4 rounded-lg shadow-lg z-50 fade-in font-bold`;
+            notification.textContent = message;
+            notification.setAttribute('role', 'alert');
+            notification.setAttribute('aria-live', 'polite');
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    notification.style.opacity = '0';
+                    setTimeout(() => document.body.removeChild(notification), 300);
+                }
+            }, duration);
+        }
+
+        // ===== RENDERING FUNCTIONS =====
+        
+        /**
+         * Render trending vector keywords with improved accessibility
+         * Creates cards with proper ARIA labels and semantic markup
+         */
+        function renderKeywords() {
+            const keywordsContainer = document.getElementById('keywords');
+            
+            // Show loading state
+            if (appState.isLoading) {
+                keywordsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-10">
+                        <div class="loading-spinner text-5xl mb-4" aria-label="Loading">🔄</div>
+                        <p class="text-blue-300 text-lg">Scraping vector trends...</p>
+                        <p class="text-accessible-muted text-sm mt-2">Max ${SCRAPING_CONFIG.max_results} items • media_type=vector</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Filter data based on current category
+            const filteredData = appState.currentCategory === 'all' 
+                ? appState.currentTrendingData 
+                : appState.currentTrendingData.filter(trend => trend.category === appState.currentCategory);
+
+            // Clear container
+            keywordsContainer.innerHTML = '';
+
+            // Render trend cards
+            filteredData.forEach((trend, index) => {
+                const trendCard = document.createElement('article');
+                trendCard.className = 'trend-card p-6 rounded-xl text-white cursor-pointer fade-in';
+                trendCard.style.animationDelay = `${index * 0.1}s`;
+                trendCard.setAttribute('role', 'article');
+                trendCard.setAttribute('aria-label', `Trending keyword: ${trend.keyword}`);
+                
+                trendCard.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-blue-100">${trend.keyword}</h3>
+                        <span class="growth-tag text-xs px-3 py-1 rounded-full font-semibold text-white" aria-label="Growth rate">
+                            ${trend.growth}
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-4">${trend.description}</p>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="bg-blue-500 bg-opacity-30 text-blue-200 px-3 py-1 rounded-full border border-blue-400 border-opacity-50">
+                            ${trend.category}
+                        </span>
+                        <span class="font-semibold text-blue-200">${trend.searches} searches</span>
+                    </div>
+                    <div class="mt-3 text-xs text-gray-400">
+                        📊 Media Type: ${trend.media_type}
+                    </div>
+                `;
+                
+                keywordsContainer.appendChild(trendCard);
+            });
+
+            // Show empty state if no results
+            if (filteredData.length === 0) {
+                keywordsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-10">
+                        <div class="text-5xl mb-4">🔍</div>
+                        <p class="text-blue-300 text-lg">No vector trends found for "${appState.currentCategory}"</p>
+                        <p class="text-accessible-muted text-sm mt-2">Try selecting a different category</p>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Render AI prompt recommendations with dual format support
+         * Includes improved tab navigation and copy functionality
+         */
+        function renderPrompts() {
+            const promptsContainer = document.getElementById('prompts');
+            
+            // Show loading state
+            if (appState.isLoading) {
+                promptsContainer.innerHTML = `
+                    <div class="text-center py-10">
+                        <div class="loading-spinner text-5xl mb-4" aria-label="Loading">🤖</div>
+                        <p class="text-blue-300 text-lg">Generating AI prompts...</p>
+                        <p class="text-accessible-muted text-sm mt-2">Optimizing for vector content</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Filter prompts based on current category
+            const filteredPrompts = appState.currentCategory === 'all' 
+                ? appState.currentPromptData 
+                : appState.currentPromptData.filter(prompt => prompt.category === appState.currentCategory);
+
+            // Clear container
+            promptsContainer.innerHTML = '';
+
+            // Render prompt cards
+            filteredPrompts.forEach((prompt, index) => {
+                const promptCard = document.createElement('article');
+                promptCard.className = 'prompt-card p-6 rounded-xl text-white fade-in';
+                promptCard.style.animationDelay = `${index * 0.1}s`;
+                promptCard.setAttribute('role', 'article');
+                promptCard.setAttribute('aria-label', `AI prompt: ${prompt.title}`);
+                
+                promptCard.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold text-blue-100">${prompt.title}</h3>
+                        <div class="flex gap-2">
+                            <span class="bg-blue-500 bg-opacity-30 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-400 border-opacity-50">
+                                ${prompt.difficulty}
+                            </span>
+                            <span class="bg-blue-500 bg-opacity-30 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-400 border-opacity-50">
+                                ${prompt.style}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Improved Format Tabs with Icons -->
+                    <div class="mb-4" role="tablist" aria-label="Prompt format options">
+                        <div class="flex gap-2 mb-3">
+                            <button 
+                                onclick="switchPromptFormat(${index}, 'text')" 
+                                class="prompt-tab-${index} prompt-tab-text-${index} bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+                                role="tab"
+                                aria-selected="true"
+                                aria-controls="prompt-text-${index}">
+                                📝 Text Format
+                            </button>
+                            <button 
+                                onclick="switchPromptFormat(${index}, 'json')" 
+                                class="prompt-tab-${index} prompt-tab-json-${index} bg-gray-600 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="prompt-json-${index}">
+                                🔧 JSON Format
+                            </button>
+                        </div>
+                        
+                        <!-- Text Prompt Panel -->
+                        <div 
+                            id="prompt-text-${index}" 
+                            class="prompt-content bg-slate-800 bg-opacity-60 p-4 rounded-lg border border-blue-500 border-opacity-30"
+                            role="tabpanel"
+                            aria-labelledby="prompt-tab-text-${index}">
+                            <p class="text-sm leading-relaxed text-gray-200">${prompt.prompt}</p>
+                        </div>
+                        
+                        <!-- JSON Prompt Panel -->
+                        <div 
+                            id="prompt-json-${index}" 
+                            class="prompt-content bg-slate-800 bg-opacity-60 p-4 rounded-lg border border-blue-500 border-opacity-30" 
+                            style="display: none;"
+                            role="tabpanel"
+                            aria-labelledby="prompt-tab-json-${index}">
+                            <pre class="text-sm leading-relaxed text-gray-200 overflow-x-auto">${JSON.stringify(prompt.jsonPrompt, null, 2)}</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-4" role="list" aria-label="Prompt tags">
+                        ${prompt.tags.map(tag => 
+                            `<span class="bg-blue-600 text-blue-100 px-3 py-1 rounded-full text-sm font-semibold border border-blue-400 border-opacity-50" role="listitem">
+                                #${tag}
+                            </span>`
+                        ).join('')}
+                    </div>
+                    
+                    <!-- Copy Button -->
+                    <div class="flex gap-2">
+                        <button 
+                            onclick="copyCurrentPrompt(${index})" 
+                            id="copy-btn-${index}"
+                            class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-500 transition-colors border border-blue-400 border-opacity-50"
+                            aria-label="Copy current prompt format to clipboard">
+                            <span id="copy-icon-${index}">📋</span> <span id="copy-text-${index}">Copy Current Format</span>
+                        </button>
+                    </div>
+                `;
+                promptsContainer.appendChild(promptCard);
+            });
+
+            // Show empty state if no results
+            if (filteredPrompts.length === 0) {
+                promptsContainer.innerHTML = `
+                    <div class="text-center py-10">
+                        <div class="text-5xl mb-4">🔍</div>
+                        <p class="text-blue-300 text-lg">No prompts found for "${appState.currentCategory}"</p>
+                        <p class="text-accessible-muted text-sm mt-2">Try selecting a different category</p>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * Unified UI update function
+         * Calls both render functions and manages loading states
+         */
+        function updateUI() {
+            renderKeywords();
+            renderPrompts();
+        }
+
+
+
+        // ===== INTERACTION FUNCTIONS =====
+        
+        /**
+         * Switch between text and JSON prompt formats
+         * Improved with proper ARIA attributes and visual feedback
+         */
+        function switchPromptFormat(index, format) {
+            const textContent = document.getElementById(`prompt-text-${index}`);
+            const jsonContent = document.getElementById(`prompt-json-${index}`);
+            const textTab = document.querySelector(`.prompt-tab-text-${index}`);
+            const jsonTab = document.querySelector(`.prompt-tab-json-${index}`);
+            
+            if (format === 'text') {
+                textContent.style.display = 'block';
+                jsonContent.style.display = 'none';
+                textTab.className = textTab.className.replace('bg-gray-600 text-gray-300', 'bg-blue-600 text-white');
+                jsonTab.className = jsonTab.className.replace('bg-blue-600 text-white', 'bg-gray-600 text-gray-300');
+                textTab.setAttribute('aria-selected', 'true');
+                jsonTab.setAttribute('aria-selected', 'false');
+            } else {
+                textContent.style.display = 'none';
+                jsonContent.style.display = 'block';
+                jsonTab.className = jsonTab.className.replace('bg-gray-600 text-gray-300', 'bg-blue-600 text-white');
+                textTab.className = textTab.className.replace('bg-blue-600 text-white', 'bg-gray-600 text-gray-300');
+                jsonTab.setAttribute('aria-selected', 'true');
+                textTab.setAttribute('aria-selected', 'false');
+            }
+        }
+
+        /**
+         * Enhanced copy function with visual feedback
+         * Shows "Copied!" state and handles clipboard API gracefully
+         */
+        function copyCurrentPrompt(index) {
+            const textContent = document.getElementById(`prompt-text-${index}`);
+            const copyBtn = document.getElementById(`copy-btn-${index}`);
+            const copyIcon = document.getElementById(`copy-icon-${index}`);
+            const copyText = document.getElementById(`copy-text-${index}`);
+            
+            let contentToCopy, formatType;
+            
+            // Determine active format
+            if (textContent.style.display !== 'none') {
+                contentToCopy = appState.currentPromptData[index].prompt;
+                formatType = 'Text';
+            } else {
+                contentToCopy = JSON.stringify(appState.currentPromptData[index].jsonPrompt, null, 2);
+                formatType = 'JSON';
+            }
+            
+            // Visual feedback - show copying state
+            copyIcon.textContent = '⏳';
+            copyText.textContent = 'Copying...';
+            copyBtn.disabled = true;
+            
+            // Try clipboard API with fallback
+            const copySuccess = () => {
+                copyIcon.textContent = '✅';
+                copyText.textContent = 'Copied!';
+                copyBtn.classList.add('copy-success');
+                showNotification(`📋 ${formatType} prompt copied successfully!`, 'success');
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    copyIcon.textContent = '📋';
+                    copyText.textContent = 'Copy Current Format';
+                    copyBtn.disabled = false;
+                    copyBtn.classList.remove('copy-success');
+                }, 2000);
+            };
+            
+            const copyFallback = () => {
+                copyIcon.textContent = '📋';
+                copyText.textContent = 'Copy Current Format';
+                copyBtn.disabled = false;
+                showNotification('📝 Please copy the prompt manually', 'warning');
+            };
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(contentToCopy)
+                    .then(copySuccess)
+                    .catch(copyFallback);
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = contentToCopy;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    copySuccess();
+                } catch (err) {
+                    copyFallback();
+                }
+                
+                document.body.removeChild(textArea);
+            }
+        }
+
+        /**
+         * Enhanced category filter with improved accessibility
+         * Updates ARIA states and provides visual feedback
+         */
+        function filterByCategory(category) {
+            appState.currentCategory = category;
+            
+            // Update filter button states with ARIA attributes
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-700', 'text-gray-300');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            
+            // Activate current filter button
+            event.target.classList.remove('bg-gray-700', 'text-gray-300');
+            event.target.classList.add('active', 'bg-blue-600', 'text-white');
+            event.target.setAttribute('aria-pressed', 'true');
+            
+            // Update UI with new filter
+            updateUI();
+            
+            // Show filter notification
+            const categoryName = category === 'all' ? 'All Categories' : category;
+            showNotification(`🔍 Filtered by: ${categoryName}`, 'info', 2000);
+        }
+
+        /**
+         * Enhanced refresh function with better loading states
+         * Simulates API calls with realistic timing and feedback
+         */
+        function refreshTrends() {
+            // Prevent multiple simultaneous refreshes
+            if (appState.isLoading) return;
+            
+            appState.isLoading = true;
+            
+            // Update refresh button state
+            const refreshBtn = document.getElementById('refreshBtn');
+            const refreshIcon = document.getElementById('refreshIcon');
+            const refreshText = document.getElementById('refreshText');
+            
+            refreshIcon.textContent = '⏳';
+            refreshText.textContent = 'Refreshing...';
+            refreshBtn.disabled = true;
+            refreshBtn.classList.add('opacity-75');
+            
+            // Show loading states
+            updateUI();
+            
+            // Simulate API call with realistic delay
+            setTimeout(() => {
+                // Update week number and shuffle data
+                appState.currentWeek = getCurrentWeekNumber();
+                appState.currentTrendingData = shuffleWithSeed(VECTOR_TRENDING_DATA, appState.currentWeek);
+                appState.currentPromptData = shuffleWithSeed(VECTOR_PROMPT_DATA, appState.currentWeek + 1);
+                
+                // Reset loading state
+                appState.isLoading = false;
+                
+                // Update refresh button
+                refreshIcon.textContent = '🔄';
+                refreshText.textContent = 'Refresh Trends';
+                refreshBtn.disabled = false;
+                refreshBtn.classList.remove('opacity-75');
+                
+                // Update UI and footer
+                updateUI();
+                document.getElementById('currentWeek').textContent = appState.currentWeek;
+                
+                // Show success notification
+                showNotification(`🎯 Vector trends updated! (Week ${appState.currentWeek}, ${SCRAPING_CONFIG.max_results} items max)`, 'success');
+                
+                // Store last update
+                localStorage.setItem('lastTrendUpdate', appState.currentWeek.toString());
+                
+            }, 1800); // Realistic loading time
+        }
+
+        /**
+         * Initialize weekly auto-updates
+         * Simulates GitHub Actions scheduled updates
+         */
+        function initWeeklyUpdates() {
+            const lastUpdate = localStorage.getItem('lastTrendUpdate');
+            const currentWeek = getCurrentWeekNumber();
+            
+            // Check if we need weekly update
+            if (!lastUpdate || parseInt(lastUpdate) !== currentWeek) {
+                setTimeout(() => {
+                    showNotification('🤖 Weekly auto-update triggered!', 'info');
+                    refreshTrends();
+                }, 1000);
+            }
+        }
+
+        // ===== INITIALIZATION =====
+        
+
+
+        /**
+         * Initialize application when DOM is ready
+         * Sets up initial state, renders content, and starts auto-update system
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize data with weekly shuffle
+            const weekNumber = getCurrentWeekNumber();
+            appState.currentTrendingData = shuffleWithSeed(VECTOR_TRENDING_DATA, weekNumber);
+            appState.currentPromptData = shuffleWithSeed(VECTOR_PROMPT_DATA, weekNumber + 1);
+            appState.currentWeek = weekNumber;
+            
+            // Update footer with current week
+            document.getElementById('currentWeek').textContent = weekNumber;
+            
+            // Render initial content
+            updateUI();
+            
+            // Initialize weekly auto-update system
+            initWeeklyUpdates();
+            
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('🎨 Vector Trend Scout loaded! Ready to explore trending vector content.', 'info', 4000);
+            }, 500);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f0b31b700c3ef7',t:'MTc2MDU0NTgxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
