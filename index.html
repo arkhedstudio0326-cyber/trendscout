@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Trend Scout</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script defer src="script.js"></script>
+  <meta name="description" content="Discover trending vector content and AI prompt recommendations.">
+</head>
+<body class="bg-gradient-custom font-sans text-gray-100 min-h-screen">
+  <div class="container mx-auto px-6 py-10">
+    <header class="text-center mb-10">
+      <h1 class="text-5xl font-bold text-blue-400 mb-2 glow-text">🎨 Vector Trend Scout</h1>
+      <p class="text-lg text-gray-300 mb-6">Weekly vector content trends & AI prompt recommendations</p>
+      <input type="text" id="searchInput" placeholder="Cari tren vector..." 
+        class="search-bar">
+    </header>
+
+    <main>
+      <section id="keywords" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"></section>
+      <section id="prompts" class="space-y-6"></section>
+    </main>
+
+    <footer class="text-center mt-16 text-gray-400 border-t border-blue-500 border-opacity-30 pt-4">
+      <p>Powered by <span class="text-blue-400 font-semibold">ARKHED Studio</span></p>
+    </footer>
+  </div>
+</body>
+</html>

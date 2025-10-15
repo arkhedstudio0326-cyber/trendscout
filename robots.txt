@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arkhedstudio0326-cyber.github.io/trendscout/sitemap.xml
